@@ -1,11 +1,18 @@
-<script setup lang="ts"></script>
-
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div class="app">
+    <h1>Hell</h1>
+  </div>
 </template>
-
-<style scoped></style>
+<script>
+  export default{
+    name:'App'
+  }
+</script>
+<style>
+  .app {
+    background-color: #ddd;
+    box-shadow: 0 0 10px;
+    border-radius: 10px;
+    padding: 20px;
+  }
+</style>
