@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <!-- 1.Vue中常用的按键别名:
+          回车=>enter
+          删除=>delete
+          (捕获"删除"和"退格"键)
+          退出=>esc
+          空格=>space
+          换行=>tab
+          上=>up
+          下=>down
+          左=>left
+          右=>right -->
+  <div id="root">
+    <h2>欢迎来到{{name}}</h2>
+    <input type="text" placeholder="按下回车提示输入" @keyup.enter="showinfo">
+  </div>
+
+  <script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+      el: '#root',
+      data: {
+        name: '尚硅谷',
+      },
+      methods: {
+        showinfo(e) {
+          console.log(e.target.value);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

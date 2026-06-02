@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 引入Vue -->
+  <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h1>你好,{{name}}</h1>
+  </div>
+  <script type="text/javascript">
+    Vue.config.productionTip = false   //阻止vue在启动时生成生产提示
+    const v = new Vue({
+      // el: '#root', //第一种写法
+      // data: {
+      //   name: '尚硅谷123' //第一种写法 对象式
+      // }
+      data() {
+        return {
+          name: '尚硅谷123'
+        } //第二种写法 函数式
+      }
+
+    })
+    console.log(v);
+    v.$mount('#roou') //第二种写法
+  </script>
+</body>
+
+</html>
