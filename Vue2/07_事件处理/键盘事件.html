@@ -15,14 +15,14 @@
           (捕获"删除"和"退格"键)
           退出=>esc
           空格=>space
-          换行=>tab
+          换行=>tab(必须配合keydown使用)
           上=>up
           下=>down
           左=>left
           右=>right -->
   <div id="root">
     <h2>欢迎来到{{name}}</h2>
-    <input type="text" placeholder="按下回车提示输入" @keyup.enter="showinfo">
+    <input type="text" placeholder="按下回车提示输入" @keyup.ctrl="showinfo">
   </div>
 
   <script type="text/javascript">
@@ -34,7 +34,8 @@
       },
       methods: {
         showinfo(e) {
-          console.log(e.target.value);
+          console.log(e.target.value)
+          // console.log(e.key, e.keyCode)
         }
       }
     })

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+  <style>
+    .box {
+      height: 100px;
+      background-color: pink;
+      border: 1px solid black;
+    }
+
+    .box1 {
+      box-shadow: 0 0 10px red;
+    }
+
+    .box2 {
+      background-color: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <!-- 绑定class样式--字符串写法 适用于：样式的个数不确定，需要动态指定-->
+    <div class="box" :class="mood" @click="changeMood">{{name}}</div>
+    <!-- 绑定class样式--数组写法 适用于：样式的个数不确定，需要动态指定-->
+    <div :class="classArr">{{name}}</div>
+    <!-- 绑定class样式--对象写法 适用于：样式的个数确定，需要动态决定用不用-->
+    <div class="box3" :class="classObj">{{name}}</div>
+    <!-- 绑定style样式--数组写法 -->
+    <div class="box3" :style="[styleObj,styleObj2]">{{name}}</div>
+    <!-- 绑定style样式--对象写法 -->
+    <div class="box3" :style="styleObj">{{name}}</div>
+  </div>
+
+  <script type="text/javascript">
+    Vue.config.productionTip = false
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        name: '尚硅谷',
+        mood: 'box1',
+        classArr: ['box', 'box1', 'box2'],
+        classObj: {
+          box: false,
+          box1: false,
+        },
+        styleObj: {
+          fontSize: '40px',
+          color: 'red'
+        },
+        styleObj2: {
+          backgroundColor: 'pink'
+        },
+      },
+      methods: {
+        changeMood() {
+          const arr = ['box', 'box1', 'box2']
+          const index = Math.floor(Math.random() * 3)
+          this.mood = arr[index]
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
