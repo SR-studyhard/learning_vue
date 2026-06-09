@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h2 v-once>初始化n值是{{n}}</h2>
+    <!-- v-pre会使Vue不解析添加v-pre的语句 -->
+    <h2 v-pre>当前n值是{{n}}</h2>
+    <button @click="n++">点我n+1</button>
+  </div>
+
+  <script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+      el: '#root',
+      data: {
+        n: 1,
+      }
+    })
+  </script>
+</body>
+
+</html>

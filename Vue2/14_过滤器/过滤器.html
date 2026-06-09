@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script type="text/javascript" src="../js/dayjs.min.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <!-- 属性计算器写法 -->
+    <h3>{{fmtTime}}</h3>
+    <!-- methods写法 -->
+    <h3>{{getFmtTime()}}</h3>
+    <!-- 过滤器写法 -->
+    <h3>{{time | timeFormater }}</h3>
+    <!-- 过滤器写法（形参） -->
+    <h3>{{time | timeFormater | mySlice}}</h3>
+  </div>
+
+  <script type="text/javascript">
+    Vue.config.productionTip = false
+    //全局过滤器
+    Vue.filter('mySlice', function (value) {
+      return value.slice(0, 4)
+    })
+    new Vue({
+      el: '#root',
+      data: {
+        time: Date.now(),
+      },
+      computed: {
+        fmtTime() {
+          return dayjs(this.time).format('YYYY年MM月DD日 HH:mm:ss')
+        }
+      },
+      methods: {
+        getFmtTime() {
+          return dayjs(this.time).format('YYYY年MM月DD日 HH:mm:ss')
+        }
+      },
+      //局部过滤器
+      filters: {
+        timeFormater(value, str = 'YYYY年MM月DD日 HH:mm:ss') {
+          return dayjs(value).format(str)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

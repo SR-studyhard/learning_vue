@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h2>当前n的值为<span v-text="n"></span></h2>
+    <h2>放大10倍的n的值为<span v-big="n"></span></h2>
+    <button @click="n++" v-a>点我n+1</button><br><br>
+    <input type="text" v-fbind:value="n">
+  </div>
+
+  <script type="text/javascript">
+    Vue.config.productionTip = false
+    const root = document.querySelector('#root')
+    root.nextElementSibling
+    new Vue({
+      el: '#root',
+      data: {
+        n: 1,
+      },
+      directives: {
+        big(element, binding) {
+          element.innerHTML = binding.value * 10
+        },
+        fbind: {
+          bind(element, binding) {
+            element.value = binding.value
+          },
+          //指令所在元素插入页面时调用
+          inserted(element, binding) {
+            element.focus()
+          },
+          //指令所在模板被重新解析时
+          update(element, binding) {
+            element.value = binding.value
+          },
+        },
+        a: {
+          bind(element, binding) {
+            element.addEventListener('click', () => {
+              const input = element.parentElement.querySelector('input')
+              if (input) {
+                input.focus()
+              }
+            })
+          },
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
