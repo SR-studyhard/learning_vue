@@ -1,3 +1,4 @@
+
 <template>
   <!-- 组件的结构 -->
   <div>
@@ -8,7 +9,7 @@
 <script>
   // 组件交互相关的代码
 export default {
-    name:'Student',
+    name:'StudentName',
     data() {
       return {
         name: '张三',
